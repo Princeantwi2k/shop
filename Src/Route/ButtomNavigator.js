@@ -1,14 +1,16 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { AntDesign, Foundation } from "@expo/vector-icons";
-import { MaterialIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Feather } from "@expo/vector-icons";
-import file from "../page/file"
-import Profile from '../page/Profile'
-import Haert from "../page/Haert"
-import Profiles from "../page/Profiles"
+import Call from "../page/Call"
+import Status from "../page/Status"
+import Camera from "../page/Camera"
+import Chat from "../page/Chat"
 import Settings from "../page/Settings"
+
+import { Entypo } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
 
@@ -19,138 +21,128 @@ const BottomTab = () => {
         tabBarShowLabel: false,
         tabBarStyle: {
           height: 80,
+          backgroundColor:"black"
         },
       }}
     >
       <Tab.Screen
-        name="Profile"
-        component={Profile}
+        name="status"
+        component={Status}
         options={{
-          title: "Discover",
+          headerShown:false,
+          tabBarActiveTintColor: "white",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="ios-sync-circle-outline" size={30} color="white" />
+          ),
+          tabBarLabelPosition: "below-icon",
+          tabBarShowLabel:true,
+          tabBarLabelStyle:{
+              fontSize:15,
+              alignSelf: "center",
+              fontWeight: "bold",
+              color:"white"
+          }
+        }}
+      />
+      <Tab.Screen
+        name="call"
+        component={Call}
+        options={{
+        
+          headerShown:false,
+          tabBarActiveTintColor: "white",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="ios-call-outline" size={30} color="white" /> 
+          ),
+          tabBarLabelPosition: "below-icon",
+          tabBarShowLabel:true,
+          tabBarLabelStyle:{
+              fontSize:15,
+              alignSelf: "center",
+              fontWeight: "bold",
+              color:"white"
+          }
+        }}
+      />
+      <Tab.Screen
+        name="camera"
+        component={Camera}
+        options={{
+          headerShown:false,
+          tabBarActiveTintColor: "white",
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="camera" size={30} color="white" />
+          ),
+          tabBarLabelPosition: "below-icon",
+          tabBarShowLabel:true,
+          tabBarLabelStyle:{
+              fontSize:15,
+              alignSelf: "center",
+              fontWeight: "bold",
+              color:"white"
+          }
+        }}
+      />
+      <Tab.Screen
+        name="chat"
+        component={Chat}
+        options={{
+          title: "Chat",
           headerStyle: {
-            backgroundColor: "#fff",
-            height: 100,
+            backgroundColor: "black",
+            height: 60,
+           
           },
           headerTintColor: "#404040",
           headerTitleStyle: {
             fontWeight: "bold",
-            fontSize: 35,
+            fontSize: 30,
             alignSelf: "center",
+            color:"white"
           },
           headerTitleAlign: "center",
           headerRight: () => (
             <View style={{ flexDirection: "row" }}>
-              <AntDesign
-                name="search1"
-                size={30}
-                color="#404040"
-                style={{ marginRight: 10 }}
-              />
+            <MaterialCommunityIcons name="email-plus" size={24} color="white" style={{marginRight:10}}/>
             </View>
           ),
           headerLeft: () => (
             <View style={{ flexDirection: "row" }}>
-              <Foundation
-                name="thumbnails"
-                size={30}
-                color="#404040"
-                style={{ marginLeft: 10 }}
-              />
+              <Text style={{marginLeft:10,color:"white"}}>Eidth</Text>
             </View>
           ),
           headerShown: true,
-          tabBarActiveTintColor: "blue",
-          tabBarIcon: ({ color, size }) => {
-            return <AntDesign name="home" size={size} color={color} />;
-          },
-        }}
-      />
-      <Tab.Screen
-        name="StorageTab"
-        component={file}
-        options={{
-          title: "Saved Items",
-          headerStyle: {
-            backgroundColor: "#fff",
-            height: 120,
-          },
-          headerTintColor: "#404040",
-          headerTitleStyle: {
-            fontWeight: "bold",
-            fontSize: 35,
-            alignSelf: "center",
-          },
-          headerTitleAlign: "center",
-          tabBarActiveTintColor: "blue",
+          tabBarActiveTintColor: "white",
           tabBarIcon: ({ color, size }) => (
-            <AntDesign name="folderopen" size={size} color={color} />
+            <Entypo name="chat" size={30} color="white" />
           ),
+          tabBarLabelPosition: "below-icon",
+          tabBarShowLabel:true,
+          tabBarLabelStyle:{
+              fontSize:15,
+              alignSelf: "center",
+              fontWeight: "bold",
+              color:"white"
+          }
         }}
       />
       <Tab.Screen
-        name="FavouriteTab"
-        component={Haert}
-        options={{
-          title: "Liked Items",
-          headerStyle: {
-            backgroundColor: "#fff",
-            height: 120,
-          },
-          headerTintColor: "#404040",
-          headerTitleStyle: {
-            fontWeight: "bold",
-            fontSize: 35,
-            alignSelf: "center",
-          },
-          headerTitleAlign: "center",
-          tabBarActiveTintColor: "blue",
-          tabBarIcon: ({ color, size }) => (
-            <MaterialIcons name="favorite-border" size={size} color={color} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="ProfileTab"
-        component={Profiles}
-        options={{
-          title: "Profile",
-          headerStyle: {
-            backgroundColor: "#fff",
-            height: 120,
-          },
-          headerTintColor: "#404040",
-          headerTitleStyle: {
-            fontWeight: "bold",
-            fontSize: 35,
-            alignSelf: "center",
-          },
-          headerTitleAlign: "center",
-          tabBarActiveTintColor: "blue",
-          tabBarIcon: ({ color, size }) => (
-            <AntDesign name="user" size={size} color={color} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="SettingsTab"
+        name="Settings"
         component={Settings}
         options={{
-          title: "Settings",
-          headerStyle: {
-            backgroundColor: "#fff",
-            height: 120,
-          },
-          headerTintColor: "#404040",
-          headerTitleStyle: {
-            fontWeight: "bold",
-            fontSize: 35,
-            alignSelf: "center",
-          },
-          headerTitleAlign: "center",
-          tabBarActiveTintColor: "blue",
+          headerShown:false,
+          tabBarActiveTintColor: "white",
           tabBarIcon: ({ color, size }) => (
             <Feather name="settings" size={size} color={color} />
           ),
+          tabBarLabelPosition: "below-icon",
+          tabBarShowLabel:true,
+          tabBarLabelStyle:{
+              fontSize:15,
+              alignSelf: "center",
+              fontWeight: "bold",
+              color:"white"
+          }
         }}
       />
     </Tab.Navigator>
@@ -159,4 +151,4 @@ const BottomTab = () => {
 
 export default BottomTab;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({}); 

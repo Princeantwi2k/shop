@@ -6,6 +6,7 @@ import Homepage from '../page/Homepage';
 import DetailScreen from '../page/DetailScreen';
 import { Fontisto } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
+import Missed from '../page/Missed';
 
 
 
@@ -18,6 +19,7 @@ const Navigation= () => {
         }>
             <Stack.Screen name="Home" component={Homepage}   />
             <Stack.Screen name="details" component={DetailScreen} />
+            <Stack.Screen name="missed" component={Missed} />
         </Stack.Navigator>
     </NavigationContainer>
 }
